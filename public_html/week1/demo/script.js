@@ -14,6 +14,10 @@ function hide() {
   div.classList.add('hide');
 }
 
-var btn = document.querySelector('button');
+// select by ID Attribute
+var btnHide = document.querySelector('#hide');
 
-btn.addEventListener('click', hide);
+// select by class Attribute
+var btnShow = document.querySelector('.btn-show');
+
+btnHide.addEventListener('click', hide);
