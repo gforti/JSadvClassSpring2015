@@ -9,6 +9,8 @@ function checkForm(e) {
     
     console.log('form submited');
     
+    console.log(email.value);
+    
     if ( email.value === '' ) {
         
     }

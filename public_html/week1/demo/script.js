@@ -13,6 +13,10 @@ function hide() {
   div.classList.remove('show');
   div.classList.add('hide');
 }
+function show() {
+     div.classList.remove('hide');
+  div.classList.add('show');
+}
 
 // select by ID Attribute
 var btnHide = document.querySelector('#hide');
@@ -21,3 +25,4 @@ var btnHide = document.querySelector('#hide');
 var btnShow = document.querySelector('.btn-show');
 
 btnHide.addEventListener('click', hide);
+btnShow.addEventListener('click', show);
