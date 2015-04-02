@@ -13,12 +13,13 @@ function checkForm(e) {
     e.preventDefault();
     
     var email = document.querySelector('input[name="email"]');
+    var emailError = document.querySelector('.emailError').classList;
    
     
     if ( email.value === '' ) {
-        document.querySelector('.emailError').classList.add('error');
+       emailError.add('error');
     } else {
-        document.querySelector('.emailError').classList.remove('error');
+       emailError.remove('error');
     }
     
     
