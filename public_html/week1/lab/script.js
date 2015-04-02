@@ -15,12 +15,25 @@ function checkForm(e) {
     var email = document.querySelector('input[name="email"]');
     var emailError = document.querySelector('.emailError').classList;
    
+    var isValid = true;
     
     if ( email.value === '' ) {
        emailError.add('error');
+       isValid = false;
     } else {
        emailError.remove('error');
     }
     
+    if ( isValid === true ) {
+        form.classList.add('hide');
+        var conf = document.querySelector('#confirmation');
+        
+        var html = '<p>Email: ';
+            html += email.value + '</p>';
+            html += '<p> First name : ' + email.value + '</p>';
+        
+        conf.innerHTML = html;
+        
+    }
     
 }
