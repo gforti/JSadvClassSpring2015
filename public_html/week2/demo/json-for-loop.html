@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <script type="text/javascript">
+            
+            var jsonstring = '{ "id": 1, "name": "A green door", "price": 12.50,"tags": ["home", "green"]}';
+    
+            var jsonobject = JSON.parse(jsonstring);
+            
+            for( var x in jsonobject) {
+                console.log( x + ' = ' + jsonobject[x] );
+            }
+            
+        </script>
+    </body>
+</html>
