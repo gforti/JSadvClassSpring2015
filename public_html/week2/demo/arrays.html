@@ -10,13 +10,28 @@
         
         <script>
             
-            var arr = [];
+            var arr = ['ten','nine'];
             
             arr.push('one');
             arr.push('two');
             arr.push('three');
+                                    
+            arr[arr.length] = 'four';
             
             console.log(arr);
+            //arr.sort();            
+            console.log(arr);
+            console.log(arr.length);
+            
+               
+               
+            if ( arr.indexOf('t') > -1 ) {
+                console.log(arr.indexOf('four'));
+            } else {
+                console.log('four is not in array');
+            }
+            
+            
             
         </script>
     </body>
