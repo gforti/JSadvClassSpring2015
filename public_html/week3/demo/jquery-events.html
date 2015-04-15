@@ -24,7 +24,13 @@
                 
              */
             
+            window.addEventListener('load', function() {
+                console.log('window loaded');
+            });
             
+            $(document).ready(function() {
+                console.log('document loaded');
+            });
            
            $("div").on("click", function(){
                 $(this).hide('slow');

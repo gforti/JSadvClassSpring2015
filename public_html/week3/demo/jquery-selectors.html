@@ -18,10 +18,13 @@
              */
             
             
-             $("div, p, blockquote").on("mouseenter", function(){
-                var htmlString = $( this ).html();                
-                $( this ).text( htmlString );
-            });
+                 function enter() {
+                     var htmlString = $( this ).html();                
+                    $( this ).text( htmlString );
+                 }      
+            
+            
+             $("div, p, blockquote").on("mouseenter", enter);
             
              $("div, p, blockquote").on("mouseleave", function(){
                 var htmlString = $( this ).text();                

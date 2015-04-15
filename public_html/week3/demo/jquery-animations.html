@@ -4,6 +4,11 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .pos {
+                position: absolute;
+            }
+        </style>
     </head>
     <body>
         <div>TODO write content</div>
@@ -27,14 +32,15 @@
             $(document).click(function(){
                 var div = $("body > div:nth-child(1)");
                 div.css('border', '1px solid black');
-                div.animate({height: '50px', width: '100px', opacity: '0.5'}, "slow");
+                div.addClass('pos');
+                div.animate({"height": '50px', "width": '100px', "top": '50px', "opacity": '0.5'}, "slow");
             });
             
             
             $(document).on('dblclick',function(){
                 var div = $("body > div:nth-child(1)");
                 div.css('border', '1px solid red');
-                div.animate({height: '100px', width: '50px', opacity: '0.9'}, "fast");
+                div.animate({height: '100px', width: '50px', "left": '100px', opacity: '0.9'}, "fast");
             });
             
         </script>
