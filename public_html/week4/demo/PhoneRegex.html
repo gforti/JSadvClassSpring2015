@@ -31,7 +31,7 @@
                 }
             };
             
-            document.querySelector('input[type="button"]').addEventListener('click', checkForm);
+            document.querySelector('input[type="button"]').addEventListener('click', checkForm3);
             
             function checkForm() {
                  
@@ -45,6 +45,42 @@
                 }
             }
             
+            
+            function checkForm2() {
+                 
+                for ( var i = 0, l = inputs.length; i < l; i++ ) {
+
+                    var regexSel = regexValidations[inputs[i].name];
+                    
+                    if ( inputs[i].value === '' || !regexSel.regex.test(inputs[i].value) ){
+                        console.log(regexValidations[inputs[i].name].message);
+                    } else {
+                        console.log(inputs[i].name + ' valid');
+                    }
+                }
+            }
+            
+            
+            
+            function checkForm3() {
+                 var data = {};
+                 
+                for ( var i = 0, l = inputs.length; i < l; i++ ) {
+
+                    data[inputs[i].name] = inputs[i].value;                    
+                    
+                }
+                
+                
+                if ( !regexValidations.phone.regex.test(data.phone) ) {
+                    console.log(regexValidations.phone.message);
+                }
+                
+                 if ( !regexValidations.email.regex.test(data.email) ) {
+                    console.log(regexValidations.email.message);
+                }
+                
+            }
        
         
         </script>
