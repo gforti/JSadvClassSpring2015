@@ -82,7 +82,10 @@
                 }
             }
             
-            
+            /*
+             * same as above but we grab the regex validation object and put it in the variable regexSel
+             * 
+             */
             function checkForm2() {
                  
                 for ( var i = 0, l = inputs.length; i < l; i++ ) {
@@ -98,7 +101,12 @@
             }
             
             
-            
+            /*
+             * is this example we collect all the values into the data JSON
+             * 
+             * Afterwards we use the regex validation knowing the keys and 
+             * add the validation
+             */
             function checkForm3() {
                  var data = {};
                  
@@ -119,6 +127,11 @@
                 
             }
             
+            
+            /*
+             * This is the simple solution where after the loop, we declare each regex needed
+             * and use the test function to check if the data value passes the regex test.
+             */
             
             function checkForm4() {
                  var data = {};
