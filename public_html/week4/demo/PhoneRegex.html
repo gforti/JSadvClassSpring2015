@@ -81,6 +81,31 @@
                 }
                 
             }
+            
+            
+            function checkForm4() {
+                 var data = {};
+                 
+                for ( var i = 0, l = inputs.length; i < l; i++ ) {
+
+                    data[inputs[i].name] = inputs[i].value;                    
+                    
+                }
+                
+                var phoneRegex = /^\(?([2-9]{1}[0-9]{2})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                
+                if ( !phoneRegex.test(data.phone) ) {
+                    console.log('Phone number is not valid');
+                }
+                
+                var emailRegex = /^[a-zA-Z0-9$]+[@]{1}[a-zA-Z]+[\.]{1}[a-zA-Z]{2,3}$/;
+                 if ( !emailRegex.test(data.email) ) {
+                    console.log('Email is not in a valid format');
+                }
+                
+            }
+            
+            
        
         
         </script>
