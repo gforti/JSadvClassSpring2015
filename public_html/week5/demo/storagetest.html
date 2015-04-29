@@ -17,12 +17,30 @@
             localStorage.removeItem();
             */
            
-           localStorage.setItem("test", "hello world")
+           
+           localStorage.setItem("test", "hello world");
             
             
             var test = localStorage.getItem("test");
             
             document.querySelector('div').innerHTML = test;
+            
+            console.log(localStorage.getItem('test2'));
+            console.log(localStorage.removeItem('test2'));
+            
+            
+            localStorage.setItem("test2", "hello world2");
+            localStorage.removeItem('test2')
+            var test2 = localStorage.getItem('test2');
+            
+            
+            //localStorage.clear();
+            if ( test2 ){
+               console.log('test2 has a value'); 
+            } else {
+               console.log('test2 has NO value');  
+            }
+            
             
         </script>
     </body>
