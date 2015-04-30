@@ -18,7 +18,7 @@
             var reg1 = /[a-z]/;
             var reg2 = new RegExp("[a-z]");
             
-            var emailRegex = /^[a-zA-Z]+[@]{1}[a-zA-Z]+[\.]{1}[a-zA-Z]{2,3}$/;
+            var emailRegex = /^[a-zA-Z0-9$]+[@]{1}[a-zA-Z]+[\.]{1}[a-zA-Z]{2,3}$/;
             
             
             if ( emailRegex.test('test@test.com') ) {
