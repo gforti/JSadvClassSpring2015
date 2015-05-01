@@ -29,11 +29,19 @@
                 }  
             };
             
+            function init(){
+                getUserLocation();
+                
+                console.log(mapdata);
+            }
+            
+            google.maps.event.addDomListener(window, 'load', init);
+            
             function getUserLocation() {                
                 if ( "geolocation" in navigator ) {
                     navigator.geolocation.getCurrentPosition(function(position){
-                            position.coords.latitude;
-                            position.coords.longitude;
+                        mapdata.user_coords.lat = position.coords.latitude;
+                        mapdata.user_coords.lng = position.coords.longitude;
                     });
                 }                
             }
