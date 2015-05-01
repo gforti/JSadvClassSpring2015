@@ -39,7 +39,8 @@
                     "lat" : 0,
                     "lng" : 0,
                     "address" : '',
-                    "address_dest" : ''
+                    "address_dest" : '',
+                    "dest_latlng" : null
                 },
                 "map" : null,
                 "marker1" : null,
@@ -88,6 +89,8 @@
                     var place = autocomplete.getPlace();
                      if ( place.hasOwnProperty('formatted_address') ) {
                         mapdata.user_coords.address_dest = place.formatted_address;
+                        
+                        mapdata.user_coords.dest_latlng = autocomplete.getBounds();
                         getDistance();
                         setMarkers();
                     }
@@ -156,10 +159,9 @@
                     map:  mapdata.map
                 });
                 
-                 var myLatlng2 = new google.maps.LatLng(mapdata.user_coords.lat, mapdata.user_coords.lng);
                 
                 mapdata.marker2 = new google.maps.Marker({
-                    position: myLatlng2,
+                    position: mapdata.user_coords.dest_latlng,
                     map:  mapdata.map
                 });
                 
