@@ -41,7 +41,9 @@
                     "address" : '',
                     "address_dest" : ''
                 },
-                "map" : null
+                "map" : null,
+                "marker1" : null,
+                "marker2" : null
             };
             
             function init(){
@@ -87,6 +89,7 @@
                      if ( place.hasOwnProperty('formatted_address') ) {
                         mapdata.user_coords.address_dest = place.formatted_address;
                         getDistance();
+                        setMarkers();
                     }
                 });
             }
@@ -143,6 +146,26 @@
               mapdata.map = new google.maps.Map(document.querySelector('#map-canvas'),
                   mapOptions);
             }
+            
+            
+            function setMarkers() {
+                var myLatlng = new google.maps.LatLng(mapdata.user_coords.lat, mapdata.user_coords.lng);
+                
+                mapdata.marker1 = new google.maps.Marker({
+                    position: myLatlng,
+                    map:  mapdata.map
+                });
+                
+                 var myLatlng2 = new google.maps.LatLng(mapdata.user_coords.lat, mapdata.user_coords.lng);
+                
+                mapdata.marker2 = new google.maps.Marker({
+                    position: myLatlng2,
+                    map:  mapdata.map
+                });
+                
+                
+            }
+            
         </script>
     </body>
 </html>
