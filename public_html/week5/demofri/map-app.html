@@ -29,20 +29,13 @@
                 }  
             };
             
-            function getUserLocation() {
-                
+            function getUserLocation() {                
                 if ( "geolocation" in navigator ) {
-
-                 navigator.geolocation.getCurrentPosition(function(position){
-                     
-                        position.coords.latitude;
-                        position.coords.longitude;
-                           
-                   
-                 });
-
-             }
-                
+                    navigator.geolocation.getCurrentPosition(function(position){
+                            position.coords.latitude;
+                            position.coords.longitude;
+                    });
+                }                
             }
             
             
