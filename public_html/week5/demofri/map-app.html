@@ -40,7 +40,8 @@
                     "lng" : 0,
                     "address" : '',
                     "address_dest" : ''
-                }  
+                },
+                "map" : null
             };
             
             function init(){
@@ -56,6 +57,7 @@
                     navigator.geolocation.getCurrentPosition(function(position){
                         mapdata.user_coords.lat = position.coords.latitude;
                         mapdata.user_coords.lng = position.coords.longitude;
+                        setupMap();
                         getUserAddress();
                     });
                 }                
@@ -84,6 +86,7 @@
                     var place = autocomplete.getPlace();
                      if ( place.hasOwnProperty('formatted_address') ) {
                         mapdata.user_coords.address_dest = place.formatted_address;
+                        getDistance();
                     }
                 });
             }
@@ -93,8 +96,8 @@
             
             function getDistance() {
                 var service = new google.maps.DistanceMatrixService();
-                var origin = '';
-                var destination = '';
+                var origin = mapdata.user_coords.address;
+                var destination = mapdata.user_coords.address_dest;
                 var options = {
                     "origins" : [origin],
                     "destinations" : [destination],
@@ -110,11 +113,11 @@
                         var element = response.rows[0].elements[0];
                      
                      if ( element.hasOwnProperty('distance') ) {
-                         results.distance = element.distance.text;
+                        document.querySelector('.distance').innerHTML = element.distance.text;
                      }
                      
                      if ( element.hasOwnProperty('duration') ) {
-                         results.duration = element.duration.text;
+                        document.querySelector('.duration').innerHTML = element.duration.text;
                      }
                         
                         
@@ -122,6 +125,24 @@
                 });
             }
             
+            
+            
+            function setupMap() {
+                var myLatlng = new google.maps.LatLng(mapdata.user_coords.lat, mapdata.user_coords.lng);
+                
+              var mapOptions = {
+                zoom: 17,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.SATELLITE,
+                streetViewControl : false,
+                mapTypeControl : false,
+                zoomControlOptions : {
+                    position : google.maps.ControlPosition.RIGHT_BOTTOM
+                }
+              };
+              mapdata.map = new google.maps.Map(document.querySelector('#map-canvas'),
+                  mapOptions);
+            }
         </script>
     </body>
 </html>
