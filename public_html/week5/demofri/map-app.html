@@ -20,7 +20,7 @@
     <body>
         
         Start <input type="text" name="start" /> <br /><br />
-        End <input type="text" name="end" />
+        End <input type="text" name="end" placeholder="city, state and/or zip" />
         <br />
         <div id="map-canvas"></div>
         
@@ -32,7 +32,8 @@
               "user_coords" : {
                     "lat" : 0,
                     "lng" : 0,
-                    "address" : ''
+                    "address" : '',
+                    "address_dest" : ''
                 }  
             };
             
@@ -68,6 +69,18 @@
                 });
             }
             
+            function setupAutoComplete() {
+                var input = document.querySelector('input[name="end"]');
+                var autocomplete = new google.maps.places.Autocomplete(input);
+             
+             
+                google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                    var place = autocomplete.getPlace();
+                     if ( place.hasOwnProperty('formatted_address') ) {
+                        mapdata.user_coords.address_dest = place.formatted_address;
+                    }
+                });
+            }
             
             
         </script>
