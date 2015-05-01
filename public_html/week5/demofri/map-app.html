@@ -34,14 +34,10 @@
                 if ( "geolocation" in navigator ) {
 
                  navigator.geolocation.getCurrentPosition(function(position){
-                     console.log(position);
-                     cords = position.coords;
-
-                     console.log('Your current position is:');
-                     console.log('Latitude : ' + cords.latitude);
-                     console.log('Longitude: ' + cords.longitude);
-                     console.log('More or less ' + cords.accuracy + ' meters.');
-
+                     
+                        position.coords.latitude;
+                        position.coords.longitude;
+                           
                    
                  });
 
