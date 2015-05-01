@@ -22,6 +22,12 @@
         Start <input type="text" name="start" /> <br /><br />
         End <input type="text" name="end" placeholder="city, state and/or zip" />
         <br />
+        <br />
+         
+        Distance <span class="distance"></span>
+        Duration: <span class="duration"></span>
+        
+        <br />
         <div id="map-canvas"></div>
         
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
@@ -39,7 +45,7 @@
             
             function init(){
                 getUserLocation();
-                
+                setupAutoComplete();
                 console.log(mapdata);
             }
             
@@ -82,6 +88,39 @@
                 });
             }
             
+            
+            
+            
+            function getDistance() {
+                var service = new google.maps.DistanceMatrixService();
+                var origin = '';
+                var destination = '';
+                var options = {
+                    "origins" : [origin],
+                    "destinations" : [destination],
+                    "travelMode" : google.maps.TravelMode.DRIVING,
+                    "unitSystem" : google.maps.UnitSystem.IMPERIAL,
+                    "avoidHighways" : false,
+                    "avoidTolls" : false
+                };
+                
+                service.getDistanceMatrix(options,function(response, status) {
+                    if ( status === google.maps.DistanceMatrixStatus.OK ) {
+                        
+                        var element = response.rows[0].elements[0];
+                     
+                     if ( element.hasOwnProperty('distance') ) {
+                         results.distance = element.distance.text;
+                     }
+                     
+                     if ( element.hasOwnProperty('duration') ) {
+                         results.duration = element.duration.text;
+                     }
+                        
+                        
+                    } 
+                });
+            }
             
         </script>
     </body>
