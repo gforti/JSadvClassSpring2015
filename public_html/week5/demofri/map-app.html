@@ -25,7 +25,8 @@
             var mapdata = {
               "user_coords" : {
                     "lat" : 0,
-                    "lng" : 0
+                    "lng" : 0,
+                    "address" : ''
                 }  
             };
             
@@ -42,10 +43,22 @@
                     navigator.geolocation.getCurrentPosition(function(position){
                         mapdata.user_coords.lat = position.coords.latitude;
                         mapdata.user_coords.lng = position.coords.longitude;
+                        getUserAddress();
                     });
                 }                
             }
             
+            function getUserAddress() {
+                var geocoder = new google.maps.Geocoder();
+                
+                var latlng = new google.maps.LatLng(mapdata.user_coords.lat, mapdata.user_coords.lng);
+                
+                geocoder.geocode({'latLng' : latlng}, function(results, status){
+                   if ( status === google.maps.GeocoderStatus.OK ) {
+                        mapdata.user_coords.address = results[1].formatted_address;
+                   } 
+                });
+            }
             
             
             
