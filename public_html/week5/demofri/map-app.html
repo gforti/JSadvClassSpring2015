@@ -55,7 +55,8 @@
                 
                 geocoder.geocode({'latLng' : latlng}, function(results, status){
                    if ( status === google.maps.GeocoderStatus.OK ) {
-                        mapdata.user_coords.address = results[1].formatted_address;
+                       console.log(results);
+                        mapdata.user_coords.address = results[0].formatted_address;
                    } 
                 });
             }
