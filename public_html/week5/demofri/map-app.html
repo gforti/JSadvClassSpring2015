@@ -35,6 +35,13 @@
             
             /*
              * Step 1 setup data needed
+             * 
+             * When you have data (also known as a model) you want to put it in a json rather than a bunch of
+             * variables.  It is a better way to maintain the state of your data and it does not 
+             * populate the global scope.
+             * 
+             * always make sure your variables have a meaningful name.  in the case of address and address_dest 
+             * it would have been better to name it origin and destination
              */
             var mapdata = {
               "user_coords" : {
@@ -52,17 +59,26 @@
             
             /*
              * Step 2 setup an init function to start your application
+             * 
+             * It's good to to have a function to execute the statements you want to run when your application is ready.
+             * It is not easy to know when the page loads and what order your program should start.  Try to have
+             * once place to organize that.
+             *
              */
             function init(){
                 getUserLocation();
                 setupAutoComplete();
             }
             
+            // Event listeners are great to run a function when the event is ready
             google.maps.event.addDomListener(window, 'load', init);
             
             
             /*
              * Step 3 get the user location.
+             * Notice that we do not set the map or the origin address unless we have
+             * the users location.  While this is required for this app, it's 
+             * actually better to make it optional.
              */
             function getUserLocation() {                
                 if ( "geolocation" in navigator ) {
