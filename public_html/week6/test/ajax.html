@@ -19,9 +19,16 @@
         
          <script type="text/javascript">
         
-       
+            var btnGET = document.querySelector('#GET');            
+            btnGET.addEventListener('click', callGet);
+            
             function callGet() {
+                var url = 'data.php?';
+                var data = 'test=hello';
 
+                url = url + data;
+                console.log(url);
+                makeAJAXCall('GET', url, null);
             }
 
             function callPost() {
