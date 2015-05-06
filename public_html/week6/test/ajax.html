@@ -41,7 +41,7 @@
                 
                  if ( verb === 'GET' ) {
                       xmlhttp.send(null);
-                 } else {
+                 } else if ( verb === 'POST' ) {
                     xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
                     xmlhttp.send(data);
                 }
