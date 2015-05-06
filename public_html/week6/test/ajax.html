@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <button id="GET">Make GET Request</button>
+        <button id="POST">Make POST Request</button>
+        
+         <script type="text/javascript">
+        
+       
+            function callGet() {
+
+            }
+
+            function callPost() {
+
+            }
+
+
+
+           function makeAJAXCall(verb, url, data) {                
+                
+                var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.open(verb, url, true);
+
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState === 4 ) {
+
+                        console.log(xmlhttp.responseText);
+                                                
+                    } else {
+                        // waiting for the call to complete
+                    }
+                };
+                
+                 if ( verb === 'GET' ) {
+                      xmlhttp.send(null);
+                 } else {
+                    xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+                    xmlhttp.send(data);
+                }
+            }
+        
+        
+        </script>
+    </body>
+</html>
