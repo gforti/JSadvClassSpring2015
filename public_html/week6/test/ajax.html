@@ -9,8 +9,8 @@
         
         
         First Name : <input name="fname" type="text" value="" /> <br />
-        color : <input name="color" type="color" /> <br />         
-        Range : 1 <input name="range" type="range" min="1" max="10" /> 10 <br />         
+        color : <input name="colors" type="color" /> <br />         
+        Range : 1 <input name="ranges" type="range" min="1" max="10" /> 10 <br />         
         DOB : <input name="dob" type="date" /> <br />
         <br />
         
@@ -28,21 +28,31 @@
             var jsonData = {};
             
             function getData() {
+                var inputs = document.querySelectorAll('input');
                 
+                for ( var i = 0, l = inputs.length; i < l; i ++ ) {
+                   jsonData[inputs[i].name] = encodeURIComponent(inputs[i].value);
+                }
+                
+                var results = '';
+                for ( var key in jsonData ) {
+                    results += ':'+key + '=' + jsonData[key] + '&'; 
+                }
+                results = results.slice(0, -1);
+                return results;
             };
             
             function callGet() {
                 var url = 'data.php?';
-                var data = 'test=hello';
-
+                var data = getData();                
                 url = url + data;
                 console.log(url);
                 makeAJAXCall('GET', url, null);
             }
 
             function callPost() {
-                var url = 'data.php';
-                var data = 'test=hello';
+                var url = 'data.php';                
+                var data = getData();
                 console.log(url);
                 makeAJAXCall('POST', url, data);
             }
