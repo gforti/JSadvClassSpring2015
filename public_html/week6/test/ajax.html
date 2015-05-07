@@ -22,6 +22,15 @@
             var btnGET = document.querySelector('#GET');            
             btnGET.addEventListener('click', callGet);
             
+            var btnPOST = document.querySelector('#POST');            
+            btnPOST.addEventListener('click', callPost);
+            
+            var jsonData = {};
+            
+            function getData() {
+                
+            };
+            
             function callGet() {
                 var url = 'data.php?';
                 var data = 'test=hello';
@@ -32,7 +41,10 @@
             }
 
             function callPost() {
-
+                var url = 'data.php';
+                var data = 'test=hello';
+                console.log(url);
+                makeAJAXCall('POST', url, data);
             }
 
 
