@@ -26,7 +26,7 @@
 			
 		//https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/HTML-canvas-guide/DrawingLinesandShapes/DrawingLinesandShapes.html#//apple_ref/doc/uid/TP40010542-CH3-SW1
 		
-		var can = document.getElementById("can"),
+		var can = document.querySelector('canvas'),
 			ctx = can.getContext("2d");
 
             function draw() {
@@ -152,10 +152,10 @@
 		
 		
 		var bluey = 300,
-			blueheight = can.height-340,
-			redy = 350,
-			redheight = can.height-390,
-			interval = setInterval(drawSteps, 100);
+                    blueheight = can.height-340,
+                    redy = 350,
+                    redheight = can.height-390,
+                    interval = setInterval(drawSteps, 100);
 		
 		function drawSteps() {
 			
