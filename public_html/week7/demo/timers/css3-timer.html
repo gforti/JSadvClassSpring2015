@@ -31,19 +31,28 @@
             btn.addEventListener('click', startUpdate);
             
             var borderSize = 1;
-            var borderTimer;
-            var speed = 100;
+            var borderTimer = null;
+            var speed = 10;
             
             function updateBorder() {
                 borderSize++;
+                console.log(borderSize);
                 div.style.borderRadius = borderSize + 'px';
                 if ( borderSize > 100 ) {
                     clearInterval(borderTimer);
+                    resetBorder();                    
                 }
             }
             
+            function resetBorder() {
+                 borderTimer = null;
+                borderSize = 1;
+            }
+            
             function startUpdate() {
-                borderTimer = setInterval(updateBorder, speed);
+                if ( borderTimer === null ) {
+                    borderTimer = setInterval(updateBorder, speed);
+                }
             }
             
                         
