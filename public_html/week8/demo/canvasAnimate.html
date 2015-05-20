@@ -30,33 +30,41 @@
                 yaxis = 0; 
         
             var canvasBottom = (can.height - height );
-            var canvasRight = ();
+            var canvasRight = ( can.width - width);
         
         
-            function growRect(){
+            function moveRectY(){
                  
-                if ( yaxis < (can.height - height ) ) {
+                if ( yaxis < canvasBottom ) {
                     drawClear();
                     yaxis += 20;                    
                     ctx.fillRect(xaxis, yaxis, width, height); // x y / w h
-                    setTimeout(growRect, 100);
+                    setTimeout(moveRectY, 100);
                 } else {
-                    //moveRect();
+                    moveRectX();
                 }
             }
-            //growRect();
-            window.addEventListener('load', growRect);
+           
+            window.addEventListener('load', moveRectY);
             
-            function moveRect(){
-                
-                x += 50;
-                //ctx.fillRect(x, y-h, 50, h); // x, y, width, height
-               console.log(x);
-               console.log(y-h);
-               console.log(50);
-               console.log();
+            function moveRectX(){
+               if ( xaxis < canvasRight ) {
+                    drawClear();
+                    xaxis += 20;                    
+                    ctx.fillRect(xaxis, yaxis, width, height); // x y / w h
+                    setTimeout(moveRectY, 100);
+                } else {
+                    reset();
+                }
                
             }
+            
+            function reset() {
+               xaxis = 150;
+               yaxis = 0;  
+               moveRectY();
+            }
+            
            
             
         </script>
